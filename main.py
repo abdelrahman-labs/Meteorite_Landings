@@ -168,13 +168,13 @@ elif page == 'Project 1':
             mode='lines',
             line=dict(color=colors[i], width=2),
             fill='tozeroy',
-            hovertemplate="%{y:.0f}"
+            hovertemplate="Year: %{x}<br>Country: %{y:.0f}"
         ))
     fig.update_layout(
         title="<b>Yearly Landings per Continent</b>",
         plot_bgcolor="rgba(0,0,0,0)",
         xaxis=dict(title="Year", showgrid=False),
-        yaxis=dict(title="Running Total", showgrid=False),
+        yaxis=dict(title="Running Total"),
         legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
         transition=dict(duration=500, easing="linear")
     )
