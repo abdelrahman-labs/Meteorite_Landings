@@ -1,25 +1,13 @@
 [theme]
 hide_menu = true
-# Primary color for interactive elements, such as buttons and radio buttons.
-# Should be a Hex color.
-primaryColor = "#1E1E1E"
+base = "light"
+primaryColor = "#264653"
+backgroundColor = "#F8F9FA"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#212529"
+font = "sans serif"
 
-# Background color for the main content area.
-# Should be a Hex color.
-backgroundColor = "#2B2B2B"
-
-# Text color for the main content area.
-# Should be a Hex color.
-textColor = "#FFFFFF"
-
-# Color for separator lines, such as the horizontal lines between elements.
-# Should be a Hex color.
-secondaryBackgroundColor = "#424242"
-
-# Color for the background of buttons when they are hovered over.
-# Should be a Hex color.
-highlightBackgroundColor = "#555555"
-
-# Color for the background of selected elements, such as selected checkboxes.
-# Should be a Hex color.
-dangerBackgroundColor = "#FF0000"
+[server]
+headless = true
+enableCORS = false
+port = 8501
