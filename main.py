@@ -73,6 +73,12 @@ elif page == 'Project 1':
     one, two = st.columns(2)
     one.plotly_chart(fig_location, use_container_width=True)
     one.write("About {:.1f}% of landed meteorites were found in Antarctica.".format(continents.loc['Antarctica', 'Percentage']))
+    one.write("There are several reasons why Antarctica has such a high number of recorded meteorite landings. One of the main factors is the continent's vast and pristine expanses of ice, which provide a stark contrast to the dark color of most "
+              "meteorites, making them easier to spot. Additionally, Antarctica's cold and dry climate helps to preserve meteorites once they land, preventing them from eroding or being covered by vegetation over time.")
+    one.write("Another contributing factor is the fact that Antarctica is relatively free from human activity, which reduces the likelihood of meteorites being disturbed or destroyed by human interference. Furthermore, the high winds and extreme "
+              "weather conditions on the continent can expose more of the underlying ice and snow, which may reveal meteorites that have been buried under the surface.")
+    one.write("Finally, the scientific community has been actively searching for meteorites in Antarctica for several decades, with numerous research expeditions mounted to collect samples. This sustained effort has led to the accumulation of a "
+              "large number of recorded meteorite landings in Antarctica.")
 
     ## Distribution per country
 
@@ -108,7 +114,10 @@ elif page == 'Project 1':
     with two:
         st.plotly_chart(fig, use_container_width=True)
     with two:
-        st.write("After ruling out Antarctica, Oman has the most recorded meteorite landings, although it has a small area.")
+        st.write("Despite its small area, Oman has the second-highest number of recorded meteorite landings after Antarctica.")
+        st.write("There are various plausible reasons, despite its small size. Firstly, the desert landscape and lack of vegetation in Oman make it easier to detect fallen meteorites. Secondly, the region's extensive history of trade and commerce "
+                 "could have attracted more individuals, thereby increasing the chances of meteorite sightings and recoveries being documented. Lastly, the Omani government has proactively encouraged research on meteorites and has implemented "
+                 "measures to preserve the country's meteorite heritage, which could have facilitated more meticulous and organized record-keeping over time.")
 
     st.markdown("---")
     st.subheader("Meteorite Classes")
@@ -122,7 +131,9 @@ elif page == 'Project 1':
     fig_noofd.update_yaxes(visible=False)
     fig_noofd.update_traces(marker_color=['indianred' if y > 5000 else 'lightblue' for y in top_classes['recclass']])
     one1.plotly_chart(fig_noofd, use_container_width=True)
-    one1.write("Both Classes L6 and H5 are the most popular among other landed meteorites")
+    one1.write("Of all the types of landed meteorites, the L6 and H5 classes are the most commonly found.")
+    one1.write("Both classes are relatively common in the asteroid belt, which is where most meteorites originate. Therefore, the higher number of L6 and H5 meteorites in the asteroid belt means that there is a greater likelihood of these types of "
+               "meteorites landing on Earth.")
 
     ## Average Mass per meteorite class
     dff = df.groupby(['recclass'])['mass (g)'].mean().reset_index().set_index('recclass').sort_values(by='mass (g)', ascending=False).head(20)
@@ -132,8 +143,8 @@ elif page == 'Project 1':
     fig_mass.update_yaxes(visible=False)
     fig_mass.update_traces(marker_color=['indianred' if y > 1000000 else 'lightblue' for y in dff['mass (g)']])
     two1.plotly_chart(fig_mass, use_container_width=True)
-    two1.write('Average Mass for the class "iron, IVB" is about 4,323 Kilo Grams which is very high compared to other Classes')
-    two1.write('The classes Iron IVB, Iron IIIE and Iron IAB-MG have an average of more than 1,000 Kilogram mass landed meteorites.')
+    two1.write('Compared to other meteorite classes, the average mass of the "iron, IVB" class is notably high, at approximately 4,323 kilograms. this class of meteorites is primarily composed of iron, which is a dense and heavy material. This '
+               'high density means that iron IVB meteorites can have a relatively large mass for their size, especially when compared to stony meteorites that have a lower density')
 
     st.markdown("---")
     st.subheader("Changes over the years")
