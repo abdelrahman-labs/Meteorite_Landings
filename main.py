@@ -41,6 +41,11 @@ if page == 'Home':
     st.write('Welcome to my data analysis portfolio! Use the sidebar to navigate to different projects.')
 elif page == 'Project 1':
     st.header('Project 1: Meteorite Landings')
+    st.subheader('Introduction')
+    st.write('The study of meteorites has long captivated scientists and enthusiasts alike, providing insight into the formation and evolution of our solar system. In this data analysis project, we examine some of the key findings regarding landed '
+             'meteorites on Earth, including their distribution, composition, and average mass. Notably, our analysis reveals that the vast majority of recorded meteorite landings occur in Antarctica, with Oman coming in second place despite its '
+             'small size. We also find that certain classes of meteorites, such as L6 and H5, are more commonly found than others, and that the "iron, IVB" class has a notably high average mass. Our findings further suggest a trend toward larger '
+             'average masses over time, which raises intriguing questions about the underlying causes. Overall, this project sheds light on the remarkable world of meteorites and the insights they offer into the mysteries of our universe.')
 
     df = load_data()
     merged = preprocess_data(df)
@@ -208,6 +213,12 @@ elif page == 'Project 1':
              "of larger meteoroids in a particular region of space that intersects with Earth's orbit every few years. Additionally, changes in the distribution of meteoroids in the solar system, such as the breakup of a large asteroid or changes "
              "in the orbit of a comet, could also be a factor in the periodic increase in the average meteorite mass. However, without further data and analysis, it is difficult to determine the exact cause of this phenomenon.")
 
+    st.subheader('Conclusion')
+    st.write('In conclusion, the analysis of meteorite landings provides valuable insights into the composition, distribution, and characteristics of these extraterrestrial objects. The data shows that Antarctica has the highest number of recorded '
+             'meteorite landings, followed by Oman, with several factors contributing to this trend. The L6 and H5 classes of meteorites are the most commonly found, reflecting their abundance in the asteroid belt. The "iron, '
+             'IVB" class of meteorites stands out with an exceptionally high average mass, owing to their dense iron composition. Moreover, recent years have shown a trend towards larger average masses of landed meteorites, '
+             'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
+             'history.')
 elif page == 'Project 2':
     st.header('Project 2: test')
 elif page == 'Project 3':
