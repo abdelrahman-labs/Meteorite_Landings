@@ -1,4 +1,5 @@
 [theme]
+hide_menu = true
 # Primary color for interactive elements, such as buttons and radio buttons.
 # Should be a Hex color.
 primaryColor = "#1E1E1E"
