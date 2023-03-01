@@ -118,7 +118,7 @@ elif page == 'Project 1':
         st.plotly_chart(fig, use_container_width=True)
     with two:
         st.write("Despite its small area, Oman has the second-highest number of recorded meteorite landings after Antarctica.")
-        st.write("There are various plausible reasons, despite its small size. Firstly, the desert landscape and lack of vegetation in Oman make it easier to detect fallen meteorites. Secondly, the region's extensive history of trade and commerce "
+        st.write("There are various plausible reasons. Firstly, the desert landscape and lack of vegetation in Oman make it easier to detect fallen meteorites. Secondly, the region's extensive history of trade and commerce "
                  "could have attracted more individuals, thereby increasing the chances of meteorite sightings and recoveries being documented. Lastly, the Omani government has proactively encouraged research on meteorites and has implemented "
                  "measures to preserve the country's meteorite heritage, which could have facilitated more meticulous and organized record-keeping over time.")
 
