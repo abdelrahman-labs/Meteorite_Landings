@@ -212,7 +212,7 @@ elif page == 'Project 1':
              "in the orbit of a comet, could also be a factor in the periodic increase in the average meteorite mass. However, without further data and analysis, it is difficult to determine the exact cause of this phenomenon.")
 
     st.subheader('Conclusion')
-    st.write('In conclusion, the analysis of meteorite landings provides valuable insights into the composition, distribution, and characteristics of these extraterrestrial objects. The data shows that Antarctica has the highest number of recorded '
+    st.write('In conclusion, The data shows that Antarctica has the highest number of recorded '
              'meteorite landings, followed by Oman, with several factors contributing to this trend. The L6 and H5 classes of meteorites are the most commonly found, reflecting their abundance in the asteroid belt. The "iron, '
              'IVB" class of meteorites stands out with an exceptionally high average mass, owing to their dense iron composition. Moreover, recent years have shown a trend towards larger average masses of landed meteorites, '
              'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
