@@ -210,7 +210,7 @@ elif page == 'Project 1':
     st.write("One possibility is that the gravitational pull of a nearby planet or asteroid could be influencing the trajectory of larger meteoroids and causing them to collide with Earth. Another possibility is that there could be a concentration "
              "of larger meteoroids in a particular region of space that intersects with Earth's orbit every few years. Additionally, changes in the distribution of meteoroids in the solar system, such as the breakup of a large asteroid or changes "
              "in the orbit of a comet, could also be a factor in the periodic increase in the average meteorite mass. However, without further data and analysis, it is difficult to determine the exact cause of this phenomenon.")
-
+    st.markdown("---")
     st.subheader('Conclusion')
     st.write('In conclusion, The data shows that Antarctica has the highest number of recorded '
              'meteorite landings, followed by Oman, with several factors contributing to this trend. The L6 and H5 classes of meteorites are the most commonly found, reflecting their abundance in the asteroid belt. The "iron, '
