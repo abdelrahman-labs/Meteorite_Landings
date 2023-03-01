@@ -191,7 +191,11 @@ elif page == 'Project 1':
     fig_mass.update_traces(marker_color=['indianred' if y > 5000 else 'lightblue' for y in df_from_1980_2013_mass['mass (g)']])
     st.plotly_chart(fig_mass, use_container_width=True)
     st.write(
-        "The average mass of meteorites from 1980 to 2013 was 2143.38 grams. Note that the high average mass in the mid-1970s is due to the low number of recorded meteorites at that time, and that more recent years have seen a trend toward larger average masses, with some years exceeding 5 kilograms.")
+        "The average mass of meteorites from 1980 to 2013 was 2143.38 grams. Note that the high average mass in the mid-1970s is due to the low number of recorded meteorites at that time, and that more recent years have seen a trend toward larger "
+        "average masses, with some years exceeding 5 kilograms.")
+    st.write("One possibility is that the gravitational pull of a nearby planet or asteroid could be influencing the trajectory of larger meteoroids and causing them to collide with Earth. Another possibility is that there could be a concentration "
+             "of larger meteoroids in a particular region of space that intersects with Earth's orbit every few years. Additionally, changes in the distribution of meteoroids in the solar system, such as the breakup of a large asteroid or changes "
+             "in the orbit of a comet, could also be a factor in the periodic increase in the average meteorite mass. However, without further data and analysis, it is difficult to determine the exact cause of this phenomenon.")
 
 elif page == 'Project 2':
     st.header('Project 2: test')
