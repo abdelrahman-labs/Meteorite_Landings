@@ -43,9 +43,7 @@ elif page == 'Project 1':
     st.header('Project 1: Meteorite Landings')
     st.subheader('Introduction')
     st.write('The study of meteorites has long captivated scientists and enthusiasts alike, providing insight into the formation and evolution of our solar system. In this data analysis project, we examine some of the key findings regarding landed '
-             'meteorites on Earth, including their distribution, composition, and average mass. Notably, our analysis reveals that the vast majority of recorded meteorite landings occur in Antarctica, with Oman coming in second place despite its '
-             'small size. We also find that certain classes of meteorites, such as L6 and H5, are more commonly found than others, and that the "iron, IVB" class has a notably high average mass. Our findings further suggest a trend toward larger '
-             'average masses over time, which raises intriguing questions about the underlying causes. Overall, this project sheds light on the remarkable world of meteorites and the insights they offer into the mysteries of our universe.')
+             'meteorites on Earth, including their distribution, composition, and average mass.')
 
     df = load_data()
     merged = preprocess_data(df)
