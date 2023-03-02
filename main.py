@@ -191,7 +191,7 @@ elif page == 'Project 1':
             mode='lines',
             line=dict(color=colors[i], width=2),
             fill='tozeroy',
-            hovertemplate="Year: %{x}<br>Country: %{y:.0f}"
+            hovertemplate="Year: %{x}<br>Running Total: %{y:.0f}"
         ))
     fig.update_layout(
         title="<b>Yearly Landings per Continent</b>",
