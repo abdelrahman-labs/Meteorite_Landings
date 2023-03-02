@@ -60,8 +60,17 @@ elif page == 'Project 1':
     st.subheader("Meteorite Landing Distribution")
 
     ## Distribution map
-    df[["lat", 'lon']] = df[['reclat', 'reclong']]
-    st.map(df[['lat', 'lon']].dropna())
+    fig_map = px.scatter_mapbox(df.loc[(df["year"] >= 1900) & (df["year"] < 2100)], lat="reclat", lon="reclong", hover_name="recclass", color='year', hover_data=['mass (g)'])
+
+    # customize the layout of the Map
+    fig_map.update_layout(
+        mapbox_style="open-street-map",
+
+        mapbox=dict(center=dict(lat=0, lon=0), zoom=0),
+        margin=dict(l=0, r=0, t=0, b=0),
+        width=1100, height=1000)
+
+    st.plotly_chart(fig_map)
 
     one, two = st.columns(2)
 
