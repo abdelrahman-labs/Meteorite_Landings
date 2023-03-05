@@ -118,7 +118,7 @@ elif page == 'Project 1':
         st.plotly_chart(fig, use_container_width=True)
     with two:
         st.write("Despite its small area, Oman has the second-highest number of recorded meteorite landings after Antarctica.")
-        st.write("There are various plausible reasons, despite its small size. Firstly, the desert landscape and lack of vegetation in Oman make it easier to detect fallen meteorites. Secondly, the region's extensive history of trade and commerce "
+        st.write("There are various plausible reasons. Firstly, the desert landscape and lack of vegetation in Oman make it easier to detect fallen meteorites. Secondly, the region's extensive history of trade and commerce "
                  "could have attracted more individuals, thereby increasing the chances of meteorite sightings and recoveries being documented. Lastly, the Omani government has proactively encouraged research on meteorites and has implemented "
                  "measures to preserve the country's meteorite heritage, which could have facilitated more meticulous and organized record-keeping over time.")
 
@@ -210,7 +210,7 @@ elif page == 'Project 1':
     st.write("One possibility is that the gravitational pull of a nearby planet or asteroid could be influencing the trajectory of larger meteoroids and causing them to collide with Earth. Another possibility is that there could be a concentration "
              "of larger meteoroids in a particular region of space that intersects with Earth's orbit every few years. Additionally, changes in the distribution of meteoroids in the solar system, such as the breakup of a large asteroid or changes "
              "in the orbit of a comet, could also be a factor in the periodic increase in the average meteorite mass. However, without further data and analysis, it is difficult to determine the exact cause of this phenomenon.")
-
+    st.markdown("---")
     st.subheader('Conclusion')
     st.write('In conclusion, The data shows that Antarctica has the highest number of recorded '
              'meteorite landings, followed by Oman, with several factors contributing to this trend. The L6 and H5 classes of meteorites are the most commonly found, reflecting their abundance in the asteroid belt. The "iron, '
@@ -218,7 +218,16 @@ elif page == 'Project 1':
              'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
              'history.')
 elif page == 'Project 2':
-    st.header('Project 2: test')
+    st.header('Project 2: Express Shipping Quality Control System')
+    st.subheader('Introduction')
+    st.write("This is an Express Company Updatable Quality Control System created using Python programming language. This system analyses shipping data from an express company and identifies problematic waybill numbers. The identified problematic "
+             "waybill numbers are presented in an easily accessible manner for branch supervisors and management to efficiently address and resolve any issues. The system can be updated using another Python script that utilizes the Selenium "
+             "framework to access the express company's platform and export the required data for analysis. The system offers an automated and efficient approach to identifying and addressing quality control issues within the express company's "
+             "shipping operations.")
+    link = "https://eghqqc-benisuef-9an7ko.streamlit.app/"
+    st.markdown(f"[Accessible here]({link})")
+
+
 elif page == 'Project 3':
     st.header('Project 3: test')
 
