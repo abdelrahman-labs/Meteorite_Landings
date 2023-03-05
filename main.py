@@ -56,6 +56,9 @@ elif page == 'Project 1':
         mime='text/csv',
     )
 
+    link = 'https://www.kaggle.com/code/rahman96/meteorite-landings-findings'
+    st.markdown(f"[Here's a link to access the source code and analysis steps, click here.]({link})")
+
     st.markdown("---")
     st.subheader("Meteorite Landing Distribution")
 
