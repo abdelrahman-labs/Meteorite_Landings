@@ -241,13 +241,7 @@ elif page == 'Project 3':
              "framework to access the express company's platform and export the required data for analysis. The system offers an automated and efficient approach to identifying and addressing quality control issues within the express company's "
              "shipping operations.")
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
-    st.markdown(f"<h1><a href='{link}'>To view the project, click here</a></h1>", unsafe_allow_html=True)
-    if st.button('View Project 3'):
-        # Redirect to the project link
-        st.experimental_set_query_params(project='3')
-        project_link = 'https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/'
-        st.experimental_rerun()
-        st.markdown(f'<meta http-equiv="refresh" content="0;URL={project_link}">', unsafe_allow_html=True)
+    st.markdown(f"[To view the project, click here]({link})")
 
 # Add footer
 st.write('')
