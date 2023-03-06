@@ -236,14 +236,14 @@ elif page == 'Project 2':
 
 elif page == 'Project 3':
     st.header('Project 3: Express Shipping Quality Control System')
-    st.write("This project is an Express Company Updatable Quality Control System created using Python programming language. This system analyses shipping data from an express company and identifies problematic waybill numbers. The identified problematic "
-             "waybill numbers are presented in an easily accessible manner for branch supervisors and management to efficiently address and resolve any issues. The system can be updated using another Python script that utilizes the Selenium "
-             "framework to access the express company's platform and export the required data for analysis. The system offers an automated and efficient approach to identifying and addressing quality control issues within the express company's "
-             "shipping operations.")
+    st.write(
+        "This project is an Express Company Updatable Quality Control System created using Python programming language. This system analyses shipping data from an express company and identifies problematic waybill numbers. The identified problematic "
+        "waybill numbers are presented in an easily accessible manner for branch supervisors and management to efficiently address and resolve any issues. The system can be updated using another Python script that utilizes the Selenium "
+        "framework to access the express company's platform and export the required data for analysis. The system offers an automated and efficient approach to identifying and addressing quality control issues within the express company's "
+        "shipping operations.")
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
     st.markdown(f"[To view the project, click here]({link})")
 
-# Add footer
 st.write('')
 st.write('')
 st.write('')
