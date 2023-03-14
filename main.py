@@ -242,7 +242,7 @@ elif page == 'Project 2':
         "framework to access the express company's platform and export the required data for analysis. The system offers an automated and efficient approach to identifying and addressing quality control issues within the express company's "
         "shipping operations.")
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
-    st.markdown(f"[To view the project, click here]({link})")
+    st.markdown(f"To view the project, click [here]({link})")
 
 st.write('')
 st.write('')
