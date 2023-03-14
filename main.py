@@ -34,11 +34,11 @@ st.markdown('### Showcase of data analysis projects')
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to:', ('Home', 'Project 1', 'Project 2', 'Project 3'))
+page = st.sidebar.radio('Go to:', ('Home', 'Project 1', 'Project 2'))
 
 # Define the content for each page
 if page == 'Home':
-    st.write('Welcome to my data analysis portfolio! Here you will find a collection of my data analysis projects. Use the sidebar to navigate to different projects.')
+    st.write('Welcome to my Data Analysis Portfolio! Here, you will find a curated collection of my best data analysis projects that demonstrate my skills and expertise in the field. Please use the sidebar to navigate to different projects and explore their detailed analyses and visualizations.')
 elif page == 'Project 1':
     st.header('Project 1: Meteorite Landings')
     st.subheader('Introduction')
@@ -229,13 +229,13 @@ elif page == 'Project 1':
              'IVB" class of meteorites stands out with an exceptionally high average mass, owing to their dense iron composition. Moreover, recent years have shown a trend towards larger average masses of landed meteorites, '
              'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
              'history.')
-elif page == 'Project 2':
-    st.header('Project 2: test')
+elif page == 'Project 3':
+    st.header('Project 3: test')
     st.subheader('Introduction')
 
 
-elif page == 'Project 3':
-    st.header('Project 3: Express Shipping Quality Control System')
+elif page == 'Project 2':
+    st.header('Project 2: Express Shipping Quality Control System')
     st.write(
         "This project is an Express Company Updatable Quality Control System created using Python programming language. This system analyses shipping data from an express company and identifies problematic waybill numbers. The identified problematic "
         "waybill numbers are presented in an easily accessible manner for branch supervisors and management to efficiently address and resolve any issues. The system can be updated using another Python script that utilizes the Selenium "
