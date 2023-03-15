@@ -10,7 +10,7 @@ st.set_page_config(
     page_icon=":bar_chart:",
     layout="wide"
 )
-
+st.set_page_config(menu_items={})
 @st.cache(allow_output_mutation=True)
 def load_data() -> pd.DataFrame:
     df = pd.read_csv("Meteorite_Landings(1).csv")
