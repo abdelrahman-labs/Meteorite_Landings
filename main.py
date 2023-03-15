@@ -8,7 +8,8 @@ import plotly.graph_objs as go
 st.set_page_config(
     page_title="A.Rahman's Projects",
     page_icon=":bar_chart:",
-    layout="wide"
+    layout="wide",
+    menu_items=[]
 )
 
 

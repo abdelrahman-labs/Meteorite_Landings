@@ -1,5 +1,4 @@
 [theme]
-hide_menu = true
 base = "light"
 primaryColor = "#264653"
 backgroundColor = "#F8F9FA"
