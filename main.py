@@ -8,9 +8,14 @@ import plotly.graph_objs as go
 st.set_page_config(
     page_title="A.Rahman's Projects",
     page_icon=":bar_chart:",
-    layout="wide",
-    menu_items={}
+    layout="wide"
 )
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 @st.cache(allow_output_mutation=True)
 def load_data() -> pd.DataFrame:
     df = pd.read_csv("Meteorite_Landings(1).csv")
