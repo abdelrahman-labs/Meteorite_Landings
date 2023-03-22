@@ -18,13 +18,13 @@ hide_menu_style = """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data()
 def load_data() -> pd.DataFrame:
     df = pd.read_csv("Meteorite_Landings(1).csv")
     return df.dropna()
 
 
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data()
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     geo_data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.reclong, df.reclat))
     world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
