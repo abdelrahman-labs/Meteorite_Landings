@@ -46,7 +46,7 @@ page = st.sidebar.radio('Go to:', ('Home', 'Project 1', 'Project 2', 'Project 3'
 if page == 'Home':
     st.write(
         'Welcome to my Data Analysis Portfolio! Here, you will find a curated collection of my best data analysis projects that demonstrate my skills and expertise in the field. Please use the sidebar to navigate to different projects and explore their detailed analyses and visualizations.')
-elif page == 'Project 1':
+elif page == 'Project 1: Meteorite Landings':
     st.header('Project 1: Meteorite Landings')
     st.subheader('Introduction')
     st.write('The study of meteorites has long captivated scientists and enthusiasts alike, providing insight into the formation and evolution of our solar system. In this data analysis project, we examine some of the key findings regarding landed '
@@ -237,7 +237,7 @@ elif page == 'Project 1':
              'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
              'history.')
 
-elif page == 'Project 3':
+elif page == 'Project 3: Express Shipping Quality Control System':
     st.header('Project 3: Express Shipping Quality Control System')
     st.write(
         "This project is an Express Company Updatable Quality Control System created using Python programming language. This system analyses shipping data from an express company and identifies problematic waybill numbers. The identified problematic "
@@ -247,7 +247,7 @@ elif page == 'Project 3':
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
     st.markdown(f"To view the project, click [here]({link})")
 
-elif page == 'Project 2':
+elif page == 'Project 2: Fetal Health Classification':
     st.header('Project 2: Fetal Health Classification')
     st.write("This project demonstrates the implementation of various machine learning classification models to predict the health status of fetuses. It involves exploring and preprocessing the dataset, feature selection, and model evaluation "
              "using cross-validation. The best model is then selected based on its accuracy and trained on the entire dataset. The project employs popular classification algorithms such as Logistic Regression, Decision Tree, K-Nearest Neighbors, "
@@ -259,5 +259,4 @@ st.write('')
 st.write('')
 st.write('')
 st.write('')
-st.markdown("---")
 st.write('Created by A.Rahman Zaki, 2023')
