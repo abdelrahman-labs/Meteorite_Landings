@@ -40,7 +40,7 @@ st.markdown('### Showcase of data analysis projects')
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to:', ('Home', 'Project 1', 'Project 2', 'Project 3'))
+page = st.sidebar.radio('Go to:', ('Home','Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Express Shipping Quality Control System'))
 
 # Define the content for each page
 if page == 'Home':
