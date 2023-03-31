@@ -252,7 +252,7 @@ elif page == 'Project 2: Fetal Health Classification':
     st.write("This project demonstrates the implementation of various machine learning classification models to predict the health status of fetuses. It involves exploring and preprocessing the dataset, feature selection, and model evaluation "
              "using cross-validation. The best model is then selected based on its accuracy and trained on the entire dataset. The project employs popular classification algorithms such as Logistic Regression, Decision Tree, K-Nearest Neighbors, "
              "and Random Forest, as well as visualization tools like Matplotlib and Seaborn")
-    link2 = "https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification"
+    link2 = "https://www.kaggle.com/code/rahman96/fetal-health-testing-9-classifiers"
     st.markdown(f"To access the source code, click [here]({link2})")
 
 st.write('')
