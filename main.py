@@ -157,7 +157,7 @@ elif page == 'Project 1: Meteorite Landings':
         xanchor="center",
         x=0.5
     ))
-    fig_noofd.update_traces(marker_color=['#B2DBE5' if y > 5000 else '#F2A694' for y in top_classes['recclass']])
+    fig_noofd.update_traces(marker_color=['#B2DBE5' if y < 5000 else '#F2A694' for y in top_classes['recclass']])
     one1.plotly_chart(fig_noofd, use_container_width=True)
     one1.write("Of all the types of landed meteorites, the L6 and H5 classes are the most commonly found.")
     one1.write("Both classes are relatively common in the asteroid belt, which is where most meteorites originate. Therefore, the higher number of L6 and H5 meteorites in the asteroid belt means that there is a greater likelihood of these types of "
