@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 import plotly.graph_objs as go
+import numpy as np
 
 # Set page title and icon
 st.set_page_config(
@@ -70,12 +71,12 @@ elif page == 'Project 1: Meteorite Landings':
     st.subheader("Meteorite Landing Distribution")
 
     ## Distribution map
-    fig_map = px.scatter_mapbox(df.loc[(df["year"] >= 1900) & (df["year"] < 2100)], lat="reclat", lon="reclong", hover_name="recclass", color='year', hover_data=['mass (g)'])
+    fig_map = px.scatter_mapbox(df.loc[(df["year"] >= 1900) & (df["year"] < 2020)], lat="reclat", lon="reclong", hover_name="recclass", color='year', hover_data=['mass (g)'],
+                                color_continuous_scale=px.colors.sequential.Viridis)
 
     # customize the layout of the Map
     fig_map.update_layout(
         mapbox_style="open-street-map",
-
         mapbox=dict(center=dict(lat=0, lon=0), zoom=0),
         margin=dict(l=0, r=0, t=0, b=0),
         width=1100, height=1000)
@@ -89,10 +90,9 @@ elif page == 'Project 1: Meteorite Landings':
     total_meteorites = continents['Continent Name'].sum()
     continents['Percentage'] = 100 * continents['Continent Name'] / total_meteorites
     fig_location = px.pie(continents, values="Percentage", names=continents.index, title="<b>Meteorites Per Continent</b>",
-                          color_discrete_sequence=px.colors.qualitative.Dark2,
+                          color_discrete_sequence=px.colors.qualitative.Set2,
                           labels={'Percentage': 'Percentage of Meteorites'},
-                          hole=0.5, )
-    one, two = st.columns(2)
+                          hole=0.5)
     one.plotly_chart(fig_location, use_container_width=True)
     one.write("About {:.1f}% of landed meteorites were found in Antarctica.".format(continents.loc['Antarctica', 'Percentage']))
     one.write("There are several reasons why Antarctica has such a high number of recorded meteorite landings. One of the main factors is the continent's vast and pristine expanses of ice, which provide a stark contrast to the dark color of most "
@@ -118,7 +118,8 @@ elif page == 'Project 1: Meteorite Landings':
         textposition="auto",
         marker=dict(
             color=countries,
-            colorscale="Blues"
+            colorscale="Viridis",
+            opacity=0.8
         )
     ))
 
@@ -149,9 +150,14 @@ elif page == 'Project 1: Meteorite Landings':
     top_classes = df['recclass'].value_counts().head(15)
     top_classes = top_classes.reset_index().set_index("index")
     fig_noofd = px.bar(top_classes, y="recclass", x=top_classes.index, title="<b>Meteorite Classes</b>", text="recclass", height=500)
-    fig_noofd.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=(dict(showgrid=False)), yaxis=(dict(showgrid=False)), barmode="stack")
-    fig_noofd.update_yaxes(visible=False)
-    fig_noofd.update_traces(marker_color=['indianred' if y > 5000 else 'lightblue' for y in top_classes['recclass']])
+    fig_noofd.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), barmode="stack", legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=-0.2,
+        xanchor="center",
+        x=0.5
+    ))
+    fig_noofd.update_traces(marker_color=['#B2DBE5' if y > 5000 else '#F2A694' for y in top_classes['recclass']])
     one1.plotly_chart(fig_noofd, use_container_width=True)
     one1.write("Of all the types of landed meteorites, the L6 and H5 classes are the most commonly found.")
     one1.write("Both classes are relatively common in the asteroid belt, which is where most meteorites originate. Therefore, the higher number of L6 and H5 meteorites in the asteroid belt means that there is a greater likelihood of these types of "
@@ -160,10 +166,9 @@ elif page == 'Project 1: Meteorite Landings':
     ## Average Mass per meteorite class
     dff = df.groupby(['recclass'])['mass (g)'].mean().reset_index().set_index('recclass').sort_values(by='mass (g)', ascending=False).head(20)
     dff["mass (g)"] = dff["mass (g)"].round()
-    fig_mass = px.bar(dff.sort_values(by='mass (g)', ascending=False), y="mass (g)", x=dff.index, title="<b>Meteorite Average Mass (G)</b>", text="mass (g)", height=500)
-    fig_mass.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=(dict(showgrid=False)), yaxis=(dict(showgrid=False)), barmode="stack")
-    fig_mass.update_yaxes(visible=False)
-    fig_mass.update_traces(marker_color=['indianred' if y > 1000000 else 'lightblue' for y in dff['mass (g)']])
+    fig_mass = px.bar(dff.sort_values(by='mass (g)', ascending=False), y="mass (g)", x=dff.index, title="<b>Meteorite Average Mass (g)</b>", text="mass (g)", height=500)
+    fig_mass.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False, title="Average Mass (g)"), barmode="stack")
+    fig_mass.update_traces(marker_color=['#E6A0C4' if y > 1000000 else '#B39EB5' for y in dff['mass (g)']])
     two1.plotly_chart(fig_mass, use_container_width=True)
     two1.write('Compared to other meteorite classes, the average mass of the "iron, IVB" class is notably high, at approximately 4,323 kilograms. this class of meteorites is primarily composed of iron, which is a dense and heavy material. This '
                'high density means that iron IVB meteorites can have a relatively large mass for their size, especially when compared to stony meteorites that have a lower density')
@@ -176,9 +181,12 @@ elif page == 'Project 1: Meteorite Landings':
     df_from_1970_2013 = df.loc[(df["year"] >= 1970) & (df["year"] <= 2013)]
     df_from_1970_2013 = df_from_1970_2013.groupby(['year'])['id'].count().reset_index().set_index('year')
     df_from_1970_2013 = df_from_1970_2013.rename(columns={"id": "# of Meteorites"})
-    fig = px.line(df_from_1970_2013, x=df_from_1970_2013.index, y='# of Meteorites', markers=True, title="<b>Yearly Meteorite Landings</b>")
+
+    # Set a new color palette
+    colors = ["#1f77b4"]
+    fig = px.line(df_from_1970_2013, x=df_from_1970_2013.index, y='# of Meteorites', markers=True, title="<b>Yearly Meteorite Landings</b>", color_discrete_sequence=colors)
+
     fig.update_yaxes(title_text="# of Meteorites")
-    fig.update_traces(line_color='blue')
     fig.update_layout(plot_bgcolor="rgba(0,0,0,0)")
     one2.plotly_chart(fig, use_container_width=False)
     st.write("The number of meteorite landings increased sharply in the early 2000s, possibly due to increased efforts in meteorite hunting or advances in detection technology.")
@@ -216,12 +224,35 @@ elif page == 'Project 1: Meteorite Landings':
     ## average mass every year
     df_from_1980_2013_mass = df.loc[(df["year"] >= 1980) & (df["year"] <= 2013)]
     df_from_1980_2013_mass = df_from_1980_2013_mass.groupby(['year'])['mass (g)'].mean().reset_index().set_index('year').sort_values(by='mass (g)', ascending=False)
+    avg_mass = df_from_1980_2013_mass['mass (g)'].mean()
     df_from_1980_2013_mass["mass (g)"] = df_from_1980_2013_mass["mass (g)"].round()
     fig_mass = px.bar(df_from_1980_2013_mass.sort_values(by='mass (g)', ascending=False), y="mass (g)", x=df_from_1980_2013_mass.index, title="Yearly Average Mass of Meteorites (1980-2013)", labels={"x": "Year", "mass (g)": "Average Mass (g)"},
                       text="mass (g)", height=500)
-    fig_mass.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=(dict(showgrid=False)), yaxis=(dict(showgrid=False)), barmode="stack")
-    fig_mass.update_yaxes(visible=False)
-    fig_mass.update_traces(marker_color=['indianred' if y > 5000 else 'lightblue' for y in df_from_1980_2013_mass['mass (g)']])
+
+    fig_mass.add_shape(type="line", x0=df_from_1980_2013_mass.index.min(), y0=avg_mass, x1=df_from_1980_2013_mass.index.max(), y1=avg_mass, line=dict(color="gray", width=2, dash="dot"))
+
+    fig_mass.update_layout(
+        plot_bgcolor="white",
+        xaxis=dict(showgrid=False, tickmode='linear'),
+        yaxis=dict(showgrid=False, visible=False),
+        barmode="stack",
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.1,
+            xanchor="right",
+            x=1
+        ),
+        font=dict(
+            family="Arial",
+            size=14
+        )
+    )
+
+    fig_mass.update_traces(
+        marker_color=px.colors.sequential.Blues[::-1],
+    )
+
     st.plotly_chart(fig_mass, use_container_width=True)
     st.write(
         "From 1980 to 2013, the average mass of meteorites was 2143.38 grams. It should be noted that the high average mass in the mid-1970s was a result of the limited number of recorded meteorites during that time. Moreover, "
