@@ -1,3 +1,3 @@
-geopandas
-pandas
-plotly
+geopandas=0.12.2
+pandas=1.5.3
+plotly=5.14.0
