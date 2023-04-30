@@ -87,14 +87,15 @@ elif page == 'Project 1: Meteorite Landings':
 
     ## Distribution per continent (pie)
     continents = merged['Continent Name'].value_counts().reset_index()
-    total_meteorites = continents['Continent Name'].sum()
-    continents['Percentage'] = 100 * continents['Continent Name'] / total_meteorites
-    fig_location = px.pie(continents, values="Percentage", names=continents.index, title="<b>Meteorites Per Continent</b>",
+    continents = continents.rename(columns={'index': 'Continent Name', 'Continent Name': 'Count'})
+    total_meteorites = continents['Count'].sum()
+    continents['Percentage'] = 100 * continents['Count'] / total_meteorites
+    fig_location = px.pie(continents, values="Percentage", names="Continent Name", title="<b>Meteorites Per Continent</b>",
                           color_discrete_sequence=px.colors.qualitative.Set2,
                           labels={'Percentage': 'Percentage of Meteorites'},
                           hole=0.5)
     one.plotly_chart(fig_location, use_container_width=True)
-    one.write("About {:.1f}% of landed meteorites were found in Antarctica.".format(continents.loc['Antarctica', 'Percentage']))
+    one.write("About {:.1f}% of landed meteorites were found in Antarctica.".format(continents.loc[continents['Continent Name'] == 'Antarctica', 'Percentage'].values[0]))
     one.write("There are several reasons why Antarctica has such a high number of recorded meteorite landings. One of the main factors is the continent's vast and pristine expanses of ice, which provide a stark contrast to the dark color of most "
               "meteorites, making them easier to spot. Additionally, Antarctica's cold and dry climate helps to preserve meteorites once they land, preventing them from eroding or being covered by vegetation over time.")
     one.write("Another contributing factor is the fact that Antarctica is relatively free from human activity, which reduces the likelihood of meteorites being disturbed or destroyed by human interference. Furthermore, the high winds and extreme "
