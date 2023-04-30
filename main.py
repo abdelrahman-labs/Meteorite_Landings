@@ -86,8 +86,7 @@ elif page == 'Project 1: Meteorite Landings':
     one, two = st.columns(2)
 
     ## Distribution per continent (pie)
-    st.write(merged['Continent Name'].value_counts().reset_index())
-    continents = merged['Continent Name'].value_counts().reset_index().set_index("index")
+    continents = merged['Continent Name'].value_counts().reset_index()
     total_meteorites = continents['Continent Name'].sum()
     continents['Percentage'] = 100 * continents['Continent Name'] / total_meteorites
     fig_location = px.pie(continents, values="Percentage", names=continents.index, title="<b>Meteorites Per Continent</b>",
