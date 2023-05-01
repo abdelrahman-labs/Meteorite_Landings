@@ -233,7 +233,7 @@ elif page == 'Project 1: Meteorite Landings':
     fig_mass.add_shape(type="line", x0=df_from_1980_2013_mass.index.min(), y0=avg_mass, x1=df_from_1980_2013_mass.index.max(), y1=avg_mass, line=dict(color="gray", width=2, dash="dot"))
 
     fig_mass.update_layout(
-        plot_bgcolor="white",
+        plot_bgcolor="rgba(0,0,0,0)",
         xaxis=dict(showgrid=False, tickmode='linear'),
         yaxis=dict(showgrid=False, visible=False),
         barmode="stack",
