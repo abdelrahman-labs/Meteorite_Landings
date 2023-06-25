@@ -89,7 +89,11 @@ elif page == 'Project 1: Meteorite Landings':
     continents = merged['Continent Name'].value_counts().reset_index()
     continents = continents.rename(columns={'index': 'Continent Name', 'Continent Name': 'Count'})
     total_meteorites = continents['Count'].sum()
+    # Convert 'Count' column to numeric values
+    continents['Count'] = pd.to_numeric(continents['Count'])
+
     continents['Percentage'] = 100 * continents['Count'] / total_meteorites
+
     fig_location = px.pie(continents, values="Percentage", names="Continent Name", title="<b>Meteorites Per Continent</b>",
                           color_discrete_sequence=px.colors.qualitative.Set2,
                           labels={'Percentage': 'Percentage of Meteorites'},
