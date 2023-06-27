@@ -90,6 +90,7 @@ elif page == 'Project 1: Meteorite Landings':
     continents = continents.rename(columns={'index': 'Continent Name', 'Continent Name': 'Count'})
     total_meteorites = continents['Count'].sum()
     # Convert 'Count' column to numeric values
+    st.write(continents)
     continents['Count'] = pd.to_numeric(continents['Count'])
 
     continents['Percentage'] = 100 * continents['Count'] / total_meteorites
