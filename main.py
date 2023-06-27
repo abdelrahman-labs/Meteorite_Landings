@@ -89,8 +89,6 @@ elif page == 'Project 1: Meteorite Landings':
     continents = merged['Continent Name'].value_counts().reset_index()
     total_meteorites = continents['count'].sum()
     # Convert 'Count' column to numeric values
-    st.write(continents)
-    st.write(total_meteorites)
     continents['count'] = pd.to_numeric(continents['count'])
 
     continents['Percentage'] = 100 * continents['count'] / total_meteorites
@@ -154,7 +152,6 @@ elif page == 'Project 1: Meteorite Landings':
 
     ## Classes Counts
     top_classes = df['recclass'].value_counts().head(15).reset_index()
-    st.write(top_classes)
     fig_noofd = px.bar(top_classes, y="count", x="recclass", title="<b>Meteorite Classes</b>", text="recclass", height=500)
     fig_noofd.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), barmode="stack", legend=dict(
         orientation="h",
