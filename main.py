@@ -87,8 +87,8 @@ elif page == 'Project 1: Meteorite Landings':
 
     ## Distribution per continent (pie)
     continents = merged['Continent Name'].value_counts().reset_index()
-    continents = continents.rename(columns={'index': 'Continent Name', 'Continent Name': 'Count'})
-    total_meteorites = continents['Count'].sum()
+    #continents = continents.rename(columns={'index': 'Continent Name', 'Continent Name': 'Count'})
+    #total_meteorites = continents['Count'].sum()
     # Convert 'Count' column to numeric values
     st.write(continents)
     st.write(total_meteorites)
