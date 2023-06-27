@@ -24,6 +24,11 @@ def load_data() -> pd.DataFrame:
     df = pd.read_csv("Meteorite_Landings(1).csv")
     return df.dropna()
 
+@st.cache_data()
+def load_data2() -> pd.DataFrame:
+    df = pd.read_csv("fetal_health.csv")
+    return df
+
 
 @st.cache_data()
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -41,7 +46,7 @@ st.markdown('### Showcase of data analysis projects')
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to:', ('Home','Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Express Shipping Quality Control System'))
+page = st.sidebar.radio('Go to:', ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Express Shipping Quality Control System', 'Contact'))
 
 # Define the content for each page
 if page == 'Home':
@@ -283,14 +288,40 @@ elif page == 'Project 3: Express Shipping Quality Control System':
 
 elif page == 'Project 2: Fetal Health Classification':
     st.header('Project 2: Fetal Health Classification')
-    st.write("This project demonstrates the implementation of various machine learning classification models to predict the health status of fetuses. It involves exploring and preprocessing the dataset, feature selection, and model evaluation "
-             "using cross-validation. The best model is then selected based on its accuracy and trained on the entire dataset. The project employs popular classification algorithms such as Logistic Regression, Decision Tree, K-Nearest Neighbors, "
-             "and Random Forest, as well as visualization tools like Matplotlib and Seaborn")
-    link2 = "https://www.kaggle.com/code/rahman96/fetal-health-testing-9-classifiers"
-    st.markdown(f"To access the source code, click [here]({link2})")
+    st.subheader('Introduction')
+    st.write('The classification of fetal health plays a crucial role in prenatal care, helping medical professionals identify potential risks and take appropriate actions. In this project, we explore a dataset containing various features related to fetal health and develop a classification model to predict fetal health status based on these attributes.')
 
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('Created by A.Rahman Zaki, 2023')
+    # Link to source code and analysis steps
+    link = 'https://www.kaggle.com/code/rahman96/fetal-health-classification'
+    st.markdown(f"To access the source code and analysis steps, click [here]({link})")
+
+    st.markdown("---")
+    st.subheader("Dataset Overview")
+
+    ## Dataset summary
+    ftl = load_data2()
+    st.write(ftl.describe())
+
+    st.markdown("---")
+    st.subheader("Fetal Health Classification Model")
+
+    ## Model performance
+    st.write("Best model: LGBMClassifier")
+    st.write("Model accuracy: 94.82%")
+
+    # Link to model download
+    st.markdown(f"To download the trained classification model, click [here]({link})")
+
+elif page == 'Contact':
+    st.header('Contact')
+    st.subheader('Get in touch with me!')
+    st.write("If you have any questions, feedback, or collaboration opportunities, please feel free to reach out to me using the contact information below.")
+
+    st.markdown('**Name:** A.Rahman Mahmoud')
+    st.markdown('**Email:** a.rahman.mahmoud195@gmail.com')
+    st.markdown('**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/a-rahman-mahmoud-642464136)')
+    st.markdown('**GitHub:** [GitHub Profile](https://github.com/abdelrahman-labs)')
+
+# Add footer
+st.markdown("---")
+st.markdown("Created by A.Rahman | Data Analysis Portfolio")
