@@ -153,8 +153,7 @@ elif page == 'Project 1: Meteorite Landings':
     one1, two1 = st.columns(2)
 
     ## Classes Counts
-    top_classes = df['recclass'].value_counts().head(15)
-    top_classes = top_classes.reset_index().set_index("index")
+    top_classes = df['recclass'].value_counts().head(15).reset_index()
     fig_noofd = px.bar(top_classes, y="recclass", x=top_classes.index, title="<b>Meteorite Classes</b>", text="recclass", height=500)
     fig_noofd.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), barmode="stack", legend=dict(
         orientation="h",
