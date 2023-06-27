@@ -317,7 +317,7 @@ elif page == 'Contact':
     st.subheader('Get in touch with me!')
     st.write("If you have any questions, feedback, or collaboration opportunities, please feel free to reach out to me using the contact information below.")
 
-    st.markdown('**Name:** A.Rahman Mahmoud')
+    st.markdown('**Name:** Abdelrahman Mahmoud Zaki')
     st.markdown('**Email:** a.rahman.mahmoud195@gmail.com')
     st.markdown('**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/a-rahman-mahmoud-642464136)')
     st.markdown('**GitHub:** [GitHub Profile](https://github.com/abdelrahman-labs)')
