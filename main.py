@@ -24,6 +24,7 @@ def load_data() -> pd.DataFrame:
     df = pd.read_csv("Meteorite_Landings(1).csv")
     return df.dropna()
 
+
 @st.cache_data()
 def load_data2() -> pd.DataFrame:
     df = pd.read_csv("fetal_health.csv")
@@ -39,18 +40,51 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     merged.rename(columns={'continent': 'Continent Name', 'name_right': 'Country Name'}, inplace=True)
     return merged
 
-# Add the logo
-logo_image = "Logo.png"
-st.image(logo_image,width=600)
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
 page = st.sidebar.radio('Go to:', ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Express Shipping Quality Control System', 'Contact'))
 
+# Add the logo with different sizes based on the page
+logo_image = "Logo.png"
+if page == 'Home' or page == 'Contact':
+    st.image(logo_image, use_column_width=True)
+else:
+    st.image(logo_image, width=300)
+
 # Define the content for each page
 if page == 'Home':
+    st.header('Welcome to my Data Analysis Portfolio!')
     st.write(
-        'Welcome to my Data Analysis Portfolio! Here, you will find a curated collection of my best data analysis projects that demonstrate my skills and expertise in the field. Please use the sidebar to navigate to different projects and explore their detailed analyses and visualizations.')
+        'Here, you will find a curated collection of some of my best projects. Please use the sidebar to navigate to different projects and explore their detailed analyses and visualizations.')
+
+    st.subheader('Project 1: Meteorite Landings')
+    st.write(
+        'This project involves analyzing a dataset of meteorite landings to gain insights into their characteristics and locations. I have performed various visualizations and statistical analyses to understand patterns and trends in meteorite '
+        'landings.')
+
+    st.subheader('Project 2: Fetal Health Classification')
+    st.write('In this project, I have developed a classification model to predict fetal health status based on various attributes. The model utilizes machine learning techniques to assist in prenatal care and identify potential risks.')
+
+    st.subheader('Project 3: Express Shipping Quality Control System')
+    st.write(
+        'The Express Shipping Quality Control System is an automated system designed to analyze shipping data from an express company and identify problematic waybill numbers. It helps improve the overall quality of the shipping process and '
+        'provides insights to address quality control issues.')
+
+    st.subheader('Skills and Expertise')
+    st.write('I have expertise in the following areas:')
+    st.write('- Data analysis and visualization')
+    st.write('- Statistical analysis')
+    st.write('- Machine learning and predictive modeling')
+    st.write('- Python programming')
+    st.write('- SQL')
+    st.write('- Tableau')
+    st.write('- Streamlit web application development')
+    st.write('- Spreadsheets (Excel, Googl Sheets, Etc.)')
+
+    st.subheader('Contact Me')
+    st.write('If you have any inquiries or would like to collaborate on a project, feel free to reach out to me. You can find my contact information below.')
+
 elif page == 'Project 1: Meteorite Landings':
     st.header('Project 1: Meteorite Landings')
     st.subheader('Introduction')
@@ -278,18 +312,19 @@ elif page == 'Project 1: Meteorite Landings':
 elif page == 'Project 3: Express Shipping Quality Control System':
     st.header('Project 3: Express Shipping Quality Control System')
     st.write(
-    "This project is an Express Company Updatable Quality Control System created using Python programming language. The system is designed to analyze shipping data from an express company and identify problematic waybill numbers. It offers an automated and efficient approach to identifying and addressing quality control issues within the company's shipping operations.")
+        "This project is an Express Company Updatable Quality Control System created using Python programming language. The system is designed to analyze shipping data from an express company and identify problematic waybill numbers. It offers an automated and efficient approach to identifying and addressing quality control issues within the company's shipping operations.")
     st.write(
-    "The system allows branch supervisors and management to access and review the identified problematic waybill numbers in an easily accessible manner. It provides relevant information and insights to efficiently address and resolve any issues, improving the overall quality of the shipping process.")
+        "The system allows branch supervisors and management to access and review the identified problematic waybill numbers in an easily accessible manner. It provides relevant information and insights to efficiently address and resolve any issues, improving the overall quality of the shipping process.")
     st.write(
-    "To update the system, a Python script utilizing the Selenium framework can be used to access the express company's platform and export the required data for analysis. This ensures that the system remains up to date with the latest shipping data, enabling accurate identification of quality control issues.")
+        "To update the system, a Python script utilizing the Selenium framework can be used to access the express company's platform and export the required data for analysis. This ensures that the system remains up to date with the latest shipping data, enabling accurate identification of quality control issues.")
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
     st.markdown(f"To view the project, [click here]({link})")
 
 elif page == 'Project 2: Fetal Health Classification':
     st.header('Project 2: Fetal Health Classification')
     st.subheader('Introduction')
-    st.write('The classification of fetal health plays a crucial role in prenatal care, helping medical professionals identify potential risks and take appropriate actions. In this project, we explore a dataset containing various features related to fetal health and develop a classification model to predict fetal health status based on these attributes.')
+    st.write(
+        'The classification of fetal health plays a crucial role in prenatal care, helping medical professionals identify potential risks and take appropriate actions. In this project, we explore a dataset containing various features related to fetal health and develop a classification model to predict fetal health status based on these attributes.')
 
     # Link to source code and analysis steps
     link = 'https://www.kaggle.com/code/rahman96/fetal-health-classification'
@@ -322,7 +357,6 @@ elif page == 'Contact':
     st.markdown('**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/a-rahman-mahmoud-642464136)')
     st.markdown('**GitHub:** [GitHub Profile](https://github.com/abdelrahman-labs)')
 
-# Add footer
 # Add footer
 st.markdown("---")
 st.markdown(
