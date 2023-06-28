@@ -7,8 +7,8 @@ import numpy as np
 
 # Set page title and icon
 st.set_page_config(
-    page_title="A.Rahman's Projects",
-    page_icon=":bar_chart:",
+    page_title="A.Rahman's Portfolio",
+    page_icon="Logo_s.png",
     layout="wide"
 )
 hide_menu_style = """
