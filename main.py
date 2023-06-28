@@ -83,7 +83,7 @@ if page == 'Home':
     st.write('- SQL')
     st.write('- Tableau')
     st.write('- Streamlit web application development')
-    st.write('- Spreadsheets (Excel, Googl Sheets, Etc.)')
+    st.write('- Spreadsheets (Excel, Google Sheets, Etc.)')
 
     st.subheader('Contact Me')
     st.write('If you have any inquiries or would like to collaborate on a project, feel free to reach out to me. You can find my contact information below.')
