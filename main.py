@@ -39,10 +39,9 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     merged.rename(columns={'continent': 'Continent Name', 'name_right': 'Country Name'}, inplace=True)
     return merged
 
-
-# Define the title and subtitle
-st.title('Data Analysis Portfolio')
-st.markdown('### Showcase of data analysis projects')
+# Add the logo
+logo_image = "Logo.png"
+st.image(logo_image,width=600)
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
@@ -323,5 +322,36 @@ elif page == 'Contact':
     st.markdown('**GitHub:** [GitHub Profile](https://github.com/abdelrahman-labs)')
 
 # Add footer
+# Add footer
 st.markdown("---")
-st.markdown("Created by A.Rahman | Data Analysis Portfolio")
+st.markdown(
+    """
+    <style>
+    .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #e9ecef;
+        font-size: 12px;
+        color: #555555;
+    }
+    .footer a {
+        color: #555555;
+        text-decoration: none;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .footer a:hover {
+        color: #333333;
+    }
+    </style>
+    """
+    "<div class='footer'>"
+    "Created by A.Rahman | "
+    "<a href='https://www.linkedin.com/in/a-rahman-mahmoud-642464136'>Linkedin</a> | "
+    "<a href='mailto:a.rahman.mahmoud195@gmail.com'>Contact</a>"
+    "</div>",
+    unsafe_allow_html=True,
+)
