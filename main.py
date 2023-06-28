@@ -43,7 +43,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to:', ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Express Shipping Quality Control System', 'Contact'))
+page = st.sidebar.radio('Go to:', ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Quality Control System', 'Project 4: Customer Dashboard', 'Contact'))
 
 # Add the logo with different sizes based on the page
 logo_image = "Logo.png"
@@ -66,10 +66,13 @@ if page == 'Home':
     st.subheader('Project 2: Fetal Health Classification')
     st.write('In this project, I have developed a classification model to predict fetal health status based on various attributes. The model utilizes machine learning techniques to assist in prenatal care and identify potential risks.')
 
-    st.subheader('Project 3: Express Shipping Quality Control System')
+    st.subheader('Project 3: Quality Control System')
     st.write(
-        'The Express Shipping Quality Control System is an automated system designed to analyze shipping data from an express company and identify problematic waybill numbers. It helps improve the overall quality of the shipping process and '
+        'The Express Company Quality Control System is an automated system designed to analyze shipping data from an express company and identify problematic waybill numbers. It helps improve the overall quality of the shipping process and '
         'provides insights to address quality control issues.')
+
+    st.subheader('Project 4: Customer Dashboard')
+    st.write("A Python and Streamlit-based web application designed to assist the operation department members in a domestic shipping company. The dashboard provides key indicators and insights to help identify issues faced by the company's top 10 customers during any selected period.")
 
     st.subheader('Skills and Expertise')
     st.write('I have expertise in the following areas:')
@@ -309,8 +312,8 @@ elif page == 'Project 1: Meteorite Landings':
              'indicating a possible shift in the distribution of meteoroids in the solar system. This analysis highlights the importance of continued research and monitoring of meteorite landings to deepen our understanding of the universe and its '
              'history.')
 
-elif page == 'Project 3: Express Shipping Quality Control System':
-    st.header('Project 3: Express Shipping Quality Control System')
+elif page == 'Project 3: Quality Control System':
+    st.header('Project 3: Quality Control System')
     st.write(
         "This project is an Express Company Updatable Quality Control System created using Python programming language. The system is designed to analyze shipping data from an express company and identify problematic waybill numbers. It offers an automated and efficient approach to identifying and addressing quality control issues within the company's shipping operations.")
     st.write(
@@ -346,6 +349,18 @@ elif page == 'Project 2: Fetal Health Classification':
 
     # Link to model download
     st.markdown(f"To download the trained classification model, click [here]({link})")
+
+elif page == 'Project 4: Customer Dashboard':
+    st.header('Project 4: Customer Dashboard')
+    st.subheader("Introduction")
+    st.write("The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
+    st.subheader("Key Features:")
+    st.write("- Comprehensive Indicators: The dashboard provides a range of indicators to monitor customer performance, including on-time delivery, on-time sign rates, sign rates, and overcapacity shipments.")
+    st.write("- Agency and Branch Analysis: The dashboard allows users to dive deeper into the data by exploring abnormal reasons for delayed shipments, categorized by agencies and branches within the company.")
+    st.write("By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
+    st.subheader('Customer Dashboard Link')
+    st.write('You can access the Customer Dashboard [here](https://cstdashboardpf-xh6mqv8x3q.streamlit.app/).')
+
 
 elif page == 'Contact':
     st.header('Contact')
