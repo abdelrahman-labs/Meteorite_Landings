@@ -30,6 +30,10 @@ def load_data2() -> pd.DataFrame:
     df = pd.read_csv("fetal_health.csv")
     return df
 
+@st.cache_data()
+def load_data3() -> pd.DataFrame:
+    df = pd.read_excel("Agency (G).xlsx")
+    return df
 
 @st.cache_data()
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -57,7 +61,7 @@ if page == 'Home':
     st.header('Welcome to my Data Analysis Portfolio!')
     st.write(
         'Here, you will find a curated collection of some of my best projects. Please use the sidebar to navigate to different projects and explore their detailed analyses and visualizations.')
-
+    st.markdown("---")
     st.subheader('Project 1: Meteorite Landings')
     st.write(
         'This project involves analyzing a dataset of meteorite landings to gain insights into their characteristics and locations. I have performed various visualizations and statistical analyses to understand patterns and trends in meteorite '
@@ -73,7 +77,7 @@ if page == 'Home':
 
     st.subheader('Project 4: Customer Dashboard')
     st.write("A Python and Streamlit-based web application designed to assist the operation department members in a domestic shipping company. The dashboard provides key indicators and insights to help identify issues faced by the company's top 10 customers during any selected period.")
-
+    st.markdown("---")
     st.subheader('Skills and Expertise')
     st.write('I have expertise in the following areas:')
     st.write('- Data analysis and visualization')
@@ -84,7 +88,7 @@ if page == 'Home':
     st.write('- Tableau')
     st.write('- Streamlit web application development')
     st.write('- Spreadsheets (Excel, Google Sheets, Etc.)')
-
+    st.markdown("---")
     st.subheader('Contact Me')
     st.write('If you have any inquiries or would like to collaborate on a project, feel free to reach out to me. You can find my contact information below.')
 
@@ -107,7 +111,9 @@ elif page == 'Project 1: Meteorite Landings':
 
     link = 'https://www.kaggle.com/code/rahman96/meteorite-landings-findings'
     st.markdown(f"To access the source code and analysis steps, click [here]({link})")
-
+    st.markdown("---")
+    st.subheader("Dataset Overview")
+    st.write(df.describe(include='all'))
     st.markdown("---")
     st.subheader("Meteorite Landing Distribution")
 
@@ -314,12 +320,19 @@ elif page == 'Project 1: Meteorite Landings':
 
 elif page == 'Project 3: Quality Control System':
     st.header('Project 3: Quality Control System')
+    st.subheader("Introduction")
     st.write(
         "This project is an Express Company Updatable Quality Control System created using Python programming language. The system is designed to analyze shipping data from an express company and identify problematic waybill numbers. It offers an automated and efficient approach to identifying and addressing quality control issues within the company's shipping operations.")
     st.write(
         "The system allows branch supervisors and management to access and review the identified problematic waybill numbers in an easily accessible manner. It provides relevant information and insights to efficiently address and resolve any issues, improving the overall quality of the shipping process.")
     st.write(
         "To update the system, a Python script utilizing the Selenium framework can be used to access the express company's platform and export the required data for analysis. This ensures that the system remains up to date with the latest shipping data, enabling accurate identification of quality control issues.")
+    st.markdown("---")
+    st.subheader("Dataset Overview")
+    qc = load_data3()
+    st.write(qc.describe(include='all'))
+    st.markdown("---")
+    st.subheader('Quality Control System Link')
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
     st.markdown(f"To view the project, [click here]({link})")
 
@@ -338,7 +351,7 @@ elif page == 'Project 2: Fetal Health Classification':
 
     ## Dataset summary
     ftl = load_data2()
-    st.write(ftl.describe())
+    st.write(ftl.describe(include='all'))
 
     st.markdown("---")
     st.subheader("Fetal Health Classification Model")
@@ -354,10 +367,12 @@ elif page == 'Project 4: Customer Dashboard':
     st.header('Project 4: Customer Dashboard')
     st.subheader("Introduction")
     st.write("The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
+    st.markdown("---")
     st.subheader("Key Features:")
     st.write("- Comprehensive Indicators: The dashboard provides a range of indicators to monitor customer performance, including on-time delivery, on-time sign rates, sign rates, and overcapacity shipments.")
     st.write("- Agency and Branch Analysis: The dashboard allows users to dive deeper into the data by exploring abnormal reasons for delayed shipments, categorized by agencies and branches within the company.")
     st.write("By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
+    st.markdown("---")
     st.subheader('Customer Dashboard Link')
     st.write('You can access the Customer Dashboard [here](https://cstdashboardpf-xh6mqv8x3q.streamlit.app/).')
 
