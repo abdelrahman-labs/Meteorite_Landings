@@ -11,6 +11,8 @@ st.set_page_config(
     page_icon="Logo_s.png",
     layout="wide"
 )
+
+# Hide the Streamlit menu
 hide_menu_style = """
         <style>
         #MainMenu {visibility: hidden;}
@@ -19,24 +21,17 @@ hide_menu_style = """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 
+# Function to load data
 @st.cache_data()
-def load_data() -> pd.DataFrame:
-    df = pd.read_csv("Meteorite_Landings(1).csv")
-    return df.dropna()
-
-
-@st.cache_data()
-def load_data2() -> pd.DataFrame:
-    df = pd.read_csv("fetal_health.csv")
+def load_data(filename: str) -> pd.DataFrame:
+    if filename.endswith(".csv"):
+        df = pd.read_csv(filename)
+    elif filename.endswith(".xlsx"):
+        df = pd.read_excel(filename)
     return df
 
 
-@st.cache_data()
-def load_data3() -> pd.DataFrame:
-    df = pd.read_excel("Agency (G).xlsx")
-    return df
-
-
+# Function to preprocess data
 @st.cache_data()
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     geo_data = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.reclong, df.reclat))
@@ -47,9 +42,18 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     return merged
 
 
+# Load data
+df_meteorites = load_data("Meteorite_Landings(1).csv").dropna()
+df_fetal_health = load_data("fetal_health.csv")
+df_agency = load_data("Agency (G).xlsx")
+
+# Preprocess data
+merged_data = preprocess_data(df_meteorites)
+
 # Create a sidebar menu
 st.sidebar.title('Navigation')
-page = st.sidebar.radio('Go to:', ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Quality Control System', 'Project 4: Customer Dashboard', 'Contact'))
+pages = ('Home', 'Project 1: Meteorite Landings', 'Project 2: Fetal Health Classification', 'Project 3: Quality Control System', 'Project 4: Customer Dashboard', 'Contact')
+page = st.sidebar.radio('Go to:', pages)
 
 # Add the logo with different sizes based on the page
 logo_image = "Logo.png"
@@ -101,10 +105,8 @@ elif page == 'Project 1: Meteorite Landings':
     st.write('The study of meteorites has long captivated scientists and enthusiasts alike, providing insight into the formation and evolution of our solar system. In this data analysis project, we examine some of the key findings regarding landed '
              'meteorites on Earth, including their distribution, composition, and average mass.')
 
-    df = load_data()
-    merged = preprocess_data(df)
 
-    csv = df.to_csv(index=False).encode('utf-8')
+    csv = df_meteorites.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="Download Raw Data",
         data=csv,
@@ -116,12 +118,12 @@ elif page == 'Project 1: Meteorite Landings':
     st.markdown(f"To access the source code and analysis steps, click [here]({link})")
     st.markdown("---")
     st.subheader("Dataset Overview")
-    st.write(df.describe(include='all'))
+    st.write(df_meteorites.describe(include='all'))
     st.markdown("---")
     st.subheader("Meteorite Landing Distribution")
 
     ## Distribution map
-    fig_map = px.scatter_mapbox(df.loc[(df["year"] >= 1900) & (df["year"] < 2020)], lat="reclat", lon="reclong", hover_name="recclass", color='year', hover_data=['mass (g)'],
+    fig_map = px.scatter_mapbox(df_meteorites.loc[(df_meteorites["year"] >= 1900) & (df_meteorites["year"] < 2020)], lat="reclat", lon="reclong", hover_name="recclass", color='year', hover_data=['mass (g)'],
                                 color_continuous_scale=px.colors.sequential.Viridis)
 
     # customize the layout of the Map
@@ -136,7 +138,7 @@ elif page == 'Project 1: Meteorite Landings':
     one, two = st.columns(2)
 
     ## Distribution per continent (pie)
-    continents = merged['Continent Name'].value_counts().reset_index()
+    continents = merged_data['Continent Name'].value_counts().reset_index()
     total_meteorites = continents['count'].sum()
     # Convert 'Count' column to numeric values
     continents['count'] = pd.to_numeric(continents['count'])
@@ -159,7 +161,7 @@ elif page == 'Project 1: Meteorite Landings':
     ## Distribution per country
 
     # Get data
-    countries = merged.loc[merged['Country Name'] != "Antarctica", "Country Name"].value_counts().head(10)
+    countries = merged_data.loc[merged_data['Country Name'] != "Antarctica", "Country Name"].value_counts().head(10)
 
     # Create figure
     fig = go.Figure()
@@ -201,7 +203,7 @@ elif page == 'Project 1: Meteorite Landings':
     one1, two1 = st.columns(2)
 
     ## Classes Counts
-    top_classes = df['recclass'].value_counts().head(15).reset_index()
+    top_classes = df_meteorites['recclass'].value_counts().head(15).reset_index()
     fig_noofd = px.bar(top_classes, y="count", x="recclass", title="<b>Meteorite Classes</b>", text="recclass", height=500)
     fig_noofd.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), barmode="stack", legend=dict(
         orientation="h",
@@ -217,7 +219,7 @@ elif page == 'Project 1: Meteorite Landings':
                "meteorites landing on Earth.")
 
     ## Average Mass per meteorite class
-    dff = df.groupby(['recclass'])['mass (g)'].mean().reset_index().set_index('recclass').sort_values(by='mass (g)', ascending=False).head(20)
+    dff = df_meteorites.groupby(['recclass'])['mass (g)'].mean().reset_index().set_index('recclass').sort_values(by='mass (g)', ascending=False).head(20)
     dff["mass (g)"] = dff["mass (g)"].round()
     fig_mass = px.bar(dff.sort_values(by='mass (g)', ascending=False), y="mass (g)", x=dff.index, title="<b>Meteorite Average Mass (g)</b>", text="mass (g)", height=500)
     fig_mass.update_layout(plot_bgcolor="rgba(0,0,0,0)", xaxis=dict(showgrid=False), yaxis=dict(showgrid=False, title="Average Mass (g)"), barmode="stack")
@@ -231,7 +233,7 @@ elif page == 'Project 1: Meteorite Landings':
     one2, two2 = st.columns(2)
 
     ## Landings over time
-    df_from_1970_2013 = df.loc[(df["year"] >= 1970) & (df["year"] <= 2013)]
+    df_from_1970_2013 = df_meteorites.loc[(df_meteorites["year"] >= 1970) & (df_meteorites["year"] <= 2013)]
     df_from_1970_2013 = df_from_1970_2013.groupby(['year'])['id'].count().reset_index().set_index('year')
     df_from_1970_2013 = df_from_1970_2013.rename(columns={"id": "# of Meteorites"})
 
@@ -245,7 +247,7 @@ elif page == 'Project 1: Meteorite Landings':
     st.write("The number of meteorite landings increased sharply in the early 2000s, possibly due to increased efforts in meteorite hunting or advances in detection technology.")
 
     ## Animated Yearly landings per continent
-    yearly_counts = merged.loc[merged['year'].between(1970, 2013), :]
+    yearly_counts = merged_data.loc[merged_data['year'].between(1970, 2013), :]
     yearly_counts = yearly_counts.groupby(['year', 'Continent Name'])['id'].count().reset_index()
     yearly_counts = yearly_counts.sort_values(['Continent Name', 'year'])
     yearly_counts['Running Total'] = yearly_counts.groupby('Continent Name')['id'].cumsum()
@@ -275,7 +277,7 @@ elif page == 'Project 1: Meteorite Landings':
     two2.plotly_chart(fig, use_container_width=True)
 
     ## average mass every year
-    df_from_1980_2013_mass = df.loc[(df["year"] >= 1980) & (df["year"] <= 2013)]
+    df_from_1980_2013_mass = df_meteorites.loc[(df_meteorites["year"] >= 1980) & (df_meteorites["year"] <= 2013)]
     df_from_1980_2013_mass = df_from_1980_2013_mass.groupby(['year'])['mass (g)'].mean().reset_index().set_index('year').sort_values(by='mass (g)', ascending=False)
     avg_mass = df_from_1980_2013_mass['mass (g)'].mean()
     df_from_1980_2013_mass["mass (g)"] = df_from_1980_2013_mass["mass (g)"].round()
@@ -332,8 +334,7 @@ elif page == 'Project 3: Quality Control System':
         "To update the system, a Python script utilizing the Selenium framework can be used to access the express company's platform and export the required data for analysis. This ensures that the system remains up to date with the latest shipping data, enabling accurate identification of quality control issues.")
     st.markdown("---")
     st.subheader("Dataset Overview")
-    qc = load_data3()
-    st.write(qc.describe(include='all'))
+    st.write(df_agency.describe(include='all'))
     st.markdown("---")
     st.subheader('Quality Control System Link')
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
@@ -353,8 +354,7 @@ elif page == 'Project 2: Fetal Health Classification':
     st.subheader("Dataset Overview")
 
     ## Dataset summary
-    ftl = load_data2()
-    st.write(ftl.describe(include='all'))
+    st.write(df_fetal_health.describe(include='all'))
 
     st.markdown("---")
     st.subheader("Fetal Health Classification Model")
