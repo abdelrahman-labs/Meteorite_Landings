@@ -30,10 +30,12 @@ def load_data2() -> pd.DataFrame:
     df = pd.read_csv("fetal_health.csv")
     return df
 
+
 @st.cache_data()
 def load_data3() -> pd.DataFrame:
     df = pd.read_excel("Agency (G).xlsx")
     return df
+
 
 @st.cache_data()
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -76,7 +78,8 @@ if page == 'Home':
         'provides insights to address quality control issues.')
 
     st.subheader('Project 4: Customer Dashboard')
-    st.write("A Python and Streamlit-based web application designed to assist the operation department members in a domestic shipping company. The dashboard provides key indicators and insights to help identify issues faced by the company's top 10 customers during any selected period.")
+    st.write(
+        "A Python and Streamlit-based web application designed to assist the operation department members in a domestic shipping company. The dashboard provides key indicators and insights to help identify issues faced by the company's top 10 customers during any selected period.")
     st.markdown("---")
     st.subheader('Skills and Expertise')
     st.write('I have expertise in the following areas:')
@@ -366,12 +369,14 @@ elif page == 'Project 2: Fetal Health Classification':
 elif page == 'Project 4: Customer Dashboard':
     st.header('Project 4: Customer Dashboard')
     st.subheader("Introduction")
-    st.write("The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
+    st.write(
+        "The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
     st.markdown("---")
     st.subheader("Key Features:")
     st.write("- Comprehensive Indicators: The dashboard provides a range of indicators to monitor customer performance, including on-time delivery, on-time sign rates, sign rates, and overcapacity shipments.")
     st.write("- Agency and Branch Analysis: The dashboard allows users to dive deeper into the data by exploring abnormal reasons for delayed shipments, categorized by agencies and branches within the company.")
-    st.write("By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
+    st.write(
+        "By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
     st.markdown("---")
     st.subheader('Customer Dashboard Link')
     st.write('You can access the Customer Dashboard [here](https://cstdashboardpf-xh6mqv8x3q.streamlit.app/).')
