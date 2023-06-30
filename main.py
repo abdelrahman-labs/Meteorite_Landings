@@ -105,7 +105,6 @@ elif page == 'Project 1: Meteorite Landings':
     st.write('The study of meteorites has long captivated scientists and enthusiasts alike, providing insight into the formation and evolution of our solar system. In this data analysis project, we examine some of the key findings regarding landed '
              'meteorites on Earth, including their distribution, composition, and average mass.')
 
-
     csv = df_meteorites.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="Download Raw Data",
