@@ -343,7 +343,7 @@ elif page == 'Project 3: Quality Control System':
     st.markdown("---")
     st.subheader('Screenshots')
     with st.expander("Click to See", expanded=False):
-        screenshots = [filename for filename in os.listdir(screenshots_directory) if filename.startswith('qc_screen')]
+        screenshots = sorted([filename for filename in os.listdir(screenshots_directory) if filename.startswith('qc_screen')])
         if screenshots:
             for screenshot in screenshots:
                 screenshot_path = os.path.join(screenshots_directory, screenshot)
@@ -394,7 +394,7 @@ elif page == 'Project 4: Customer Dashboard':
         st.markdown("---")
         st.subheader('Screenshots')
         with st.expander("Click to See", expanded=False):
-            screenshots = [filename for filename in os.listdir(screenshots_directory) if filename.startswith('cst_screen')]
+            screenshots = sorted([filename for filename in os.listdir(screenshots_directory) if filename.startswith('cst_screen')])
             if screenshots:
                 for screenshot in screenshots:
                     screenshot_path = os.path.join(screenshots_directory, screenshot)
