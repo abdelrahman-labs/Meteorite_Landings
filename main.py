@@ -4,6 +4,7 @@ import plotly.express as px
 import streamlit as st
 import plotly.graph_objs as go
 import numpy as np
+import os
 
 # Set page title and icon
 st.set_page_config(
@@ -49,6 +50,9 @@ df_agency = load_data("Agency (G).xlsx")
 
 # Preprocess data
 merged_data = preprocess_data(df_meteorites)
+
+# Screenshots
+screenshots_directory = 'screenshots'
 
 # Create a sidebar menu
 st.sidebar.title('Navigation')
@@ -331,9 +335,19 @@ elif page == 'Project 3: Quality Control System':
         "The system allows branch supervisors and management to access and review the identified problematic waybill numbers in an easily accessible manner. It provides relevant information and insights to efficiently address and resolve any issues, improving the overall quality of the shipping process.")
     st.write(
         "To update the system, a Python script utilizing the Selenium framework can be used to access the express company's platform and export the required data for analysis. This ensures that the system remains up to date with the latest shipping data, enabling accurate identification of quality control issues.")
+    st.write(
+        "The system is also capable of monitoring the performance of each branch, including metrics such as the time taken for sorting shipments or unloading the truck. It provides real-time performance information for each courier, including details on their activity and inactivity periods. Additionally, the system can generate maps that display the locations where couriers have performed any activity during the day.")
     st.markdown("---")
     st.subheader("Dataset Overview")
     st.write(df_agency.describe(include='all'))
+    st.markdown("---")
+    st.subheader('Screenshots')
+    with st.expander("Click to See", expanded=False):
+        screenshots = [filename for filename in os.listdir(screenshots_directory) if filename.startswith('qc_screen')]
+        if screenshots:
+            for screenshot in screenshots:
+                screenshot_path = os.path.join(screenshots_directory, screenshot)
+                st.image(screenshot_path, use_column_width=True)
     st.markdown("---")
     st.subheader('Quality Control System Link')
     link = "https://abdelrahman-labs-shipping-quality-control-main-sh8g9x.streamlit.app/"
@@ -366,19 +380,30 @@ elif page == 'Project 2: Fetal Health Classification':
     st.markdown(f"To download the trained classification model, click [here]({link})")
 
 elif page == 'Project 4: Customer Dashboard':
-    st.header('Project 4: Customer Dashboard')
-    st.subheader("Introduction")
-    st.write(
-        "The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
-    st.markdown("---")
-    st.subheader("Key Features:")
-    st.write("- Comprehensive Indicators: The dashboard provides a range of indicators to monitor customer performance, including on-time delivery, on-time sign rates, sign rates, and overcapacity shipments.")
-    st.write("- Agency and Branch Analysis: The dashboard allows users to dive deeper into the data by exploring abnormal reasons for delayed shipments, categorized by agencies and branches within the company.")
-    st.write(
-        "By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
-    st.markdown("---")
-    st.subheader('Customer Dashboard Link')
-    st.write('You can access the Customer Dashboard [here](https://cstdashboardpf-xh6mqv8x3q.streamlit.app/).')
+    if page == 'Project 4: Customer Dashboard':
+        st.header('Project 4: Customer Dashboard')
+        st.subheader("Introduction")
+        st.write(
+            "The Customer Dashboard is a Python and Streamlit-based web application specifically developed for the operation department members of a domestic shipping company. It serves as a powerful tool to identify and address issues faced by the company's top 10 customers during any selected timeframe.")
+        st.markdown("---")
+        st.subheader("Key Features:")
+        st.write("- Comprehensive Indicators: The dashboard provides a range of indicators to monitor customer performance, including on-time delivery, on-time sign rates, sign rates, and overcapacity shipments.")
+        st.write("- Agency and Branch Analysis: The dashboard allows users to dive deeper into the data by exploring abnormal reasons for delayed shipments, categorized by agencies and branches within the company.")
+        st.write(
+            "By utilizing this customer dashboard, the operation department members can efficiently track the performance of their top customers, identify potential challenges, and take proactive measures to ensure smooth operations and customer satisfaction.")
+        st.markdown("---")
+        st.subheader('Screenshots')
+        with st.expander("Click to See", expanded=False):
+            screenshots = [filename for filename in os.listdir(screenshots_directory) if filename.startswith('cst_screen')]
+            if screenshots:
+                for screenshot in screenshots:
+                    screenshot_path = os.path.join(screenshots_directory, screenshot)
+                    st.image(screenshot_path, use_column_width=True)
+
+        st.markdown("---")
+        st.subheader('Customer Dashboard Link')
+        st.write('You can access the Customer Dashboard [here](https://cstdashboardpf-xh6mqv8x3q.streamlit.app/).')
+
 
 
 elif page == 'Contact':
