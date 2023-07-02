@@ -415,7 +415,6 @@ elif page == 'Contact':
     st.markdown('**Email:** a.rahman.mahmoud195@gmail.com')
     st.markdown('**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/a-rahman-mahmoud-642464136)')
     st.markdown('**GitHub:** [GitHub Profile](https://github.com/abdelrahman-labs)')
-    st.markdown('**Kaggle:** [Kaggle Profile](https://www.kaggle.com/rahman96)')
 
 # Add footer
 st.markdown("---")
