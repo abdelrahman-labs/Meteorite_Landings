@@ -360,7 +360,7 @@ elif page == 'Project 2: Fetal Health Classification':
         'The classification of fetal health plays a crucial role in prenatal care, helping medical professionals identify potential risks and take appropriate actions. In this project, we explore a dataset containing various features related to fetal health and develop a classification model to predict fetal health status based on these attributes.')
 
     # Link to source code and analysis steps
-    link = 'https://www.kaggle.com/code/rahman96/fetal-health-classification'
+    link = 'https://www.kaggle.com/code/rahman96/fetal-health-testing-9-classifiers'
     st.markdown(f"To access the source code and analysis steps, click [here]({link})")
 
     st.markdown("---")
